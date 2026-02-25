@@ -1,12 +1,18 @@
 pipeline {
     agent {
-        docker { image 'python:3.12.3' }
+        docker { image 'python:3.10' }
     }
     environment {
         SONARQUBE_SERVER = 'my_sonarqube'
         SONAR_PROJECT_KEY = 'simple_django_app' 
     }
     stages {
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+                sh 'pip install sonar-scanner'
+            }
+        }
         stage('Self Test') {
             steps {
                 sh 'python3 manage.py test'
