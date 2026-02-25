@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'python:3.12.3' }
+    }
     environment {
         SONARQUBE_SERVER = 'my_sonarqube'
         SONAR_PROJECT_KEY = 'simple_django_app' 
