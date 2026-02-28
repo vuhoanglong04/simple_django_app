@@ -54,7 +54,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "mysite.wsgi.application"
 
 APP_ENV = os.environ.get('ENV_NAME', 'development')
-
+print(f"DEBUG: APP_ENV is set to: {APP_ENV}")
 if APP_ENV == 'production':
     DATABASES = {
         'default': {
