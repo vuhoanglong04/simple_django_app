@@ -53,10 +53,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "mysite.wsgi.application"
 
-APP_ENV = os.environ.get('ENV_NAME', 'development')
-print(f"DEBUG: APP_ENV is set to: {APP_ENV}")
-if APP_ENV == 'production':
-    DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.environ.get('DB_NAME'),
@@ -64,15 +61,12 @@ if APP_ENV == 'production':
             'PASSWORD': os.environ.get('DB_PASSWORD'),
             'HOST': os.environ.get('DB_HOST'),
             'PORT': os.environ.get('DB_PORT'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
+        },
+        'test': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
-    }
+}
 
 AUTH_PASSWORD_VALIDATORS = []
 
